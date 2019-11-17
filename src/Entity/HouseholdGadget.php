@@ -58,6 +58,11 @@ class HouseholdGadget
      */
     private $room;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\householdGadgetTimer", cascade={"persist", "remove"})
+     */
+    private $timer;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -155,6 +160,18 @@ class HouseholdGadget
     public function setRoom(?Room $room): self
     {
         $this->room = $room;
+
+        return $this;
+    }
+
+    public function getTimer(): ?householdGadgetTimer
+    {
+        return $this->timer;
+    }
+
+    public function setTimer(?householdGadgetTimer $timer): self
+    {
+        $this->timer = $timer;
 
         return $this;
     }

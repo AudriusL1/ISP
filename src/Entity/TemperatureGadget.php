@@ -48,6 +48,11 @@ class TemperatureGadget
      */
     private $room;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\temperatureTimer", cascade={"persist", "remove"})
+     */
+    private $timer;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,6 +126,18 @@ class TemperatureGadget
     public function setRoom(?Room $room): self
     {
         $this->room = $room;
+
+        return $this;
+    }
+
+    public function getTimer(): ?temperatureTimer
+    {
+        return $this->timer;
+    }
+
+    public function setTimer(?temperatureTimer $timer): self
+    {
+        $this->timer = $timer;
 
         return $this;
     }
