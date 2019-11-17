@@ -57,6 +57,12 @@ class ElectronicGadget
      */
     private $sistem;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Room", inversedBy="electronicGadgets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $room;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,6 +160,18 @@ class ElectronicGadget
     public function setSistem(?Sistem $sistem): self
     {
         $this->sistem = $sistem;
+
+        return $this;
+    }
+
+    public function getRoom(): ?Room
+    {
+        return $this->room;
+    }
+
+    public function setRoom(?Room $room): self
+    {
+        $this->room = $room;
 
         return $this;
     }
