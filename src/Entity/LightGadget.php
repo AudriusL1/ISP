@@ -48,6 +48,11 @@ class LightGadget
      */
     private $room;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\LightGadgetColor", inversedBy="gadget")
+     */
+    private $color;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,6 +126,18 @@ class LightGadget
     public function setRoom(?Room $room): self
     {
         $this->room = $room;
+
+        return $this;
+    }
+
+    public function getColor(): ?LightGadgetColor
+    {
+        return $this->color;
+    }
+
+    public function setColor(?LightGadgetColor $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }

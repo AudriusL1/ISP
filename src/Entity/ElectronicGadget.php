@@ -63,6 +63,11 @@ class ElectronicGadget
      */
     private $room;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\GadgetGroup", inversedBy="elGadgets")
+     */
+    private $gadgetGroup;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -172,6 +177,18 @@ class ElectronicGadget
     public function setRoom(?Room $room): self
     {
         $this->room = $room;
+
+        return $this;
+    }
+
+    public function getGadgetGroup(): ?GadgetGroup
+    {
+        return $this->gadgetGroup;
+    }
+
+    public function setGadgetGroup(?GadgetGroup $gadgetGroup): self
+    {
+        $this->gadgetGroup = $gadgetGroup;
 
         return $this;
     }

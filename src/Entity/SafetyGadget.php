@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,6 +54,16 @@ class SafetyGadget
      * @ORM\JoinColumn(nullable=false)
      */
     private $room;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\alert", mappedBy="gadget")
+     */
+    private $alerts;
+
+    public function __construct()
+    {
+        $this->alerts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -138,6 +150,37 @@ class SafetyGadget
     public function setRoom(?Room $room): self
     {
         $this->room = $room;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|alert[]
+     */
+    public function getAlerts(): Collection
+    {
+        return $this->alerts;
+    }
+
+    public function addAlert(alert $alert): self
+    {
+        if (!$this->alerts->contains($alert)) {
+            $this->alerts[] = $alert;
+            $alert->setGadget($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAlert(alert $alert): self
+    {
+        if ($this->alerts->contains($alert)) {
+            $this->alerts->removeElement($alert);
+            // set the owning side to null (unless already changed)
+            if ($alert->getGadget() === $this) {
+                $alert->setGadget(null);
+            }
+        }
 
         return $this;
     }

@@ -36,6 +36,12 @@ class Alert
      */
     private $receiver;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\SafetyGadget", inversedBy="alerts")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $gadget;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +91,18 @@ class Alert
     public function setReceiver(string $receiver): self
     {
         $this->receiver = $receiver;
+
+        return $this;
+    }
+
+    public function getGadget(): ?SafetyGadget
+    {
+        return $this->gadget;
+    }
+
+    public function setGadget(?SafetyGadget $gadget): self
+    {
+        $this->gadget = $gadget;
 
         return $this;
     }
