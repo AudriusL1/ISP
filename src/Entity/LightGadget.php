@@ -36,6 +36,12 @@ class LightGadget
      */
     private $watts;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Sistem", inversedBy="lightGadgets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $sistem;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +91,18 @@ class LightGadget
     public function setWatts(float $watts): self
     {
         $this->watts = $watts;
+
+        return $this;
+    }
+
+    public function getSistem(): ?Sistem
+    {
+        return $this->sistem;
+    }
+
+    public function setSistem(?Sistem $sistem): self
+    {
+        $this->sistem = $sistem;
 
         return $this;
     }

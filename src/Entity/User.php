@@ -70,6 +70,11 @@ class User implements UserInterface
      */
     private $phone;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Sistem", inversedBy="users")
+     */
+    private $sistem;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -220,6 +225,18 @@ class User implements UserInterface
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getSistem(): ?Sistem
+    {
+        return $this->sistem;
+    }
+
+    public function setSistem(?Sistem $sistem): self
+    {
+        $this->sistem = $sistem;
 
         return $this;
     }

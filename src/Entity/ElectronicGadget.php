@@ -51,6 +51,12 @@ class ElectronicGadget
      */
     private $manufacturer;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Sistem", inversedBy="electronicGadgets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $sistem;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +142,18 @@ class ElectronicGadget
     public function setManufacturer(string $manufacturer): self
     {
         $this->manufacturer = $manufacturer;
+
+        return $this;
+    }
+
+    public function getSistem(): ?Sistem
+    {
+        return $this->sistem;
+    }
+
+    public function setSistem(?Sistem $sistem): self
+    {
+        $this->sistem = $sistem;
 
         return $this;
     }

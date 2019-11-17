@@ -36,6 +36,12 @@ class TemperatureGadget
      */
     private $origin;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Sistem", inversedBy="temperatureGadgets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $sistem;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +91,18 @@ class TemperatureGadget
     public function setOrigin(string $origin): self
     {
         $this->origin = $origin;
+
+        return $this;
+    }
+
+    public function getSistem(): ?Sistem
+    {
+        return $this->sistem;
+    }
+
+    public function setSistem(?Sistem $sistem): self
+    {
+        $this->sistem = $sistem;
 
         return $this;
     }

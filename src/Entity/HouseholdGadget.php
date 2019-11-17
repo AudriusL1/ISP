@@ -46,6 +46,12 @@ class HouseholdGadget
      */
     private $type;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Sistem", inversedBy="householdGadgets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $sistem;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +125,18 @@ class HouseholdGadget
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getSistem(): ?Sistem
+    {
+        return $this->sistem;
+    }
+
+    public function setSistem(?Sistem $sistem): self
+    {
+        $this->sistem = $sistem;
 
         return $this;
     }

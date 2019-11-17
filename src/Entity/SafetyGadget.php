@@ -41,6 +41,12 @@ class SafetyGadget
      */
     private $model;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Sistem", inversedBy="safetyGadgets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $sistem;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +108,18 @@ class SafetyGadget
     public function setModel(string $model): self
     {
         $this->model = $model;
+
+        return $this;
+    }
+
+    public function getSistem(): ?Sistem
+    {
+        return $this->sistem;
+    }
+
+    public function setSistem(?Sistem $sistem): self
+    {
+        $this->sistem = $sistem;
 
         return $this;
     }
