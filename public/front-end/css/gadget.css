@@ -3,14 +3,20 @@ html{
 
 }
 
-body{
-    margin: 0em;
+body {
+  margin: 0em;
 }
 
 .nav {
-    background-color: black; 
+  background: #ffc34d;
+  background: -webkit-linear-gradient(to top, #ffc34d, #ffc34d);
+  background: -moz-linear-gradient(to top, #ffc34d, #ffc34d);
+  background: -o-linear-gradient(to top, #ffc34d, #ffc34d);
+  background: linear-gradient(to top, #ffc34d, #8DC26F);
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
     list-style-type: none;
-
     margin: 0;
     padding: 0;
   }
@@ -60,12 +66,12 @@ body{
       text-decoration: none;
       background-attachment: fixed;
       margin: 2em;
-      width:90%;
+      width:70%;
       padding: 0;
-      height: auto;
-
-      
+      height: 50%;    
   }
+
+
   .textallign{
     position: absolute;
     top: 80%;
